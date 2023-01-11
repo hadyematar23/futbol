@@ -60,4 +60,5 @@ RSpec.describe SeasonUtility do
     expect(seasonstats.list_gameteams_from_particular_season("2012")).to eq([gameteam1, gameteam3])
 
   end
+
 end 

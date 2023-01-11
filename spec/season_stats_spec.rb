@@ -58,6 +58,36 @@ RSpec.describe SeasonStats do
       expect(season_stats.fewest_tackles("20132014")).to eq("Los Angeles FC")
     end
   end
-
   
+  describe "helper methods" do 
+  
+  it "can determine the coach name as as key, and the value is an array with the first number being the victories and the second number being the total games coached" do 
+
+    
+
+    gameteam1 = double("1")
+    gameteam2 = double("2")
+    gameteam3 = double("3")
+
+    
+    allow(gameteam1).to receive(:head_coach).and_return("Phil Jackson")
+    allow(gameteam2).to receive(:head_coach).and_return("Doc Rivers")
+    allow(gameteam3).to receive(:head_coach).and_return("Doc Rivers")
+
+    allow(gameteam1).to receive(:result).and_return("WIN")
+    allow(gameteam2).to receive(:result).and_return("LOSS")
+    allow(gameteam3).to receive(:result).and_return("LOSS")
+
+    games_in_season = [gameteam1, gameteam2, gameteam3]
+
+    require 'pry'; binding.pry
+    expect(season_stats.coach_victory_percentage_hash(games_in_season)).to eq({
+      "Phil Jackson" => [1, 1], 
+      "Doc Rivers" => [0, 2]
+    })
+  end
+
+  # it "can determine "
+end
+
 end

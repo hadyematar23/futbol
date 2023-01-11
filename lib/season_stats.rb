@@ -22,14 +22,13 @@ class SeasonStats < Stats
 
   def determine_coach_ratios(season)
     gameteams_in_season = list_gameteams_from_particular_season(season)
-    require 'pry'; binding.pry
     coach_hash = coach_victory_percentage_hash(gameteams_in_season)
     ratios = determine_sorted_ratio(coach_hash)
   end 
 
   def coach_victory_percentage_hash(games_in_season)
     coach= Hash.new{ |hash, key| hash[key] = [0,0] }
-
+require 'pry'; binding.pry
     games_in_season.each do |game_team|
       coach[game_team.head_coach][1] += 1
       if game_team.result == "WIN"

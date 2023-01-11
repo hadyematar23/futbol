@@ -6,7 +6,6 @@ module SeasonUtility
 
   def list_gameteams_from_particular_season(season)
     games_in_season = all_games_by_season[season]
-    require 'pry'; binding.pry
     pull_gameids = games_in_season.map {|game| game.game_id} 
 
     pull_gameids.flat_map do |game_id|
