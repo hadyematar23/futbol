@@ -58,4 +58,6 @@ RSpec.describe SeasonStats do
       expect(season_stats.fewest_tackles("20132014")).to eq("Los Angeles FC")
     end
   end
+
+  
 end

@@ -21,23 +21,11 @@ class SeasonStats < Stats
   end 
 
   def determine_coach_ratios(season)
-    games_in_season = list_gameteams_from_particular_season(season)
-    coach_hash = coach_victory_percentage_hash(games_in_season)
+    gameteams_in_season = list_gameteams_from_particular_season(season)
+    require 'pry'; binding.pry
+    coach_hash = coach_victory_percentage_hash(gameteams_in_season)
     ratios = determine_sorted_ratio(coach_hash)
   end 
-
-  def list_gameteams_from_particular_season(season)
-    games_in_season = list_games_per_season(season)
-    pull_gameids = games_in_season.map {|game| game.game_id} 
-
-    pull_gameids.flat_map do |game_id|
-      game_teams.find_all {|game_team| game_id == game_team.game_id}
-    end
-  end 
-
-  def list_games_per_season(season)
-    games.find_all {|game| game.season == season} 
-  end
 
   def coach_victory_percentage_hash(games_in_season)
     coach= Hash.new{ |hash, key| hash[key] = [0,0] }

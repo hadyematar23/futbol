@@ -1,8 +1,10 @@
 require_relative './stats'
-require_relative './statistics_module'
+require_relative './game_utility.rb'
+require_relative './team_utility.rb'
 
 class TeamStats < Stats
-  include Statistacable
+  include GameUtility 
+  include TeamUtility
 
   def initialize(locations)
     super
@@ -96,13 +98,13 @@ class TeamStats < Stats
   def favorite_opponent(team_id)
     sorted_array = sorted_array_of_opponent_win_percentages(team_id)
     result_id = sorted_array.reverse.first[1]
-    determine_team_name_based_on_team_id(result_id)
+    team_name(result_id)
   end
 
   def rival(team_id)
     sorted_array = sorted_array_of_opponent_win_percentages(team_id)
     result_id = sorted_array.first[1]
-    determine_team_name_based_on_team_id(result_id)
+    team_name(result_id)
   end
 
   def sorted_array_of_opponent_win_percentages(team_id)
@@ -135,16 +137,6 @@ class TeamStats < Stats
       end
     end
     return new_hash
-  end
-
-
-  # MOVE INTO MODULE POTENTIALLY
-  def determine_game_outcome(game, relevant_game_teams) 
-    relevant_game_teams.each do |game_team|
-      if game_team.game_id == game.game_id
-        return game_team.result 
-      end
-    end
   end
 
 end
