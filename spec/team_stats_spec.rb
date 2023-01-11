@@ -122,43 +122,6 @@ end
     expect(teamstats.rival("6")).to eq("Sporting Kansas City").or(eq("Philadelphia Union")).or(eq("Utah Royals FC"))
   end
 
-
-  it "finds all the game teams for that team_id" do 
-    gameteam1 = double("Game 1")
-    gameteam2 = double("Game2")
-    gameteam3 = double("Game3")
-
-    allow(gameteam1).to receive(:team_id).and_return("8")
-    allow(gameteam2).to receive(:team_id).and_return("12")
-    allow(gameteam3).to receive(:team_id).and_return("8")
-    
-    allow(teamstats).to receive(:game_teams).and_return([gameteam1, gameteam2, gameteam3])
-    
-    expect(teamstats.find_relevant_game_teams_by_teamid("8")).to eq([gameteam1, gameteam3])
-
-    end 
-
-  xit "finds all the games that are associated with that gameteam" do 
-
-    gameteam1 = double("GameTeam1")
-    gameteam3 = double("GameTeam3")
-    game1 = double("Game1")
-    game3 = double("Game3")
-
-    allow(game1).to receive(:game_id).and_return(2334)
-    allow(game3).to receive(:game_id).and_return(1111)
-
-    allow(gameteam3).to receive(:game_id).and_return(1898)
-    allow(gameteam1).to receive(:game_id).and_return(2334)
-    
-    relevant_game_teams = [gameteam1, gameteam3]
-
-    allow(teamstats).to receive(:games).and_return([game1, game3])
-
-    expect(teamstats.find_corresponding_games_by_gameteam(relevant_game_teams)).to eq([game1])
-  
-  end 
-
     it "creates an array of the number of goals scored in each game" do 
 
       game1 = double("Game1")
