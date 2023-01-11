@@ -14,7 +14,7 @@ require './lib/game'
 require './lib/gameteam'
 require './lib/team'
 
-require './lib/statistics_module'
 require './lib/season_utility'
 require './lib/goals_utility'
 require './lib/team_utility'
+require './lib/game_utility'

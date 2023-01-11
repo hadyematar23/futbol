@@ -28,7 +28,6 @@ class SeasonStats < Stats
 
   def coach_victory_percentage_hash(games_in_season)
     coach= Hash.new{ |hash, key| hash[key] = [0,0] }
-require 'pry'; binding.pry
     games_in_season.each do |game_team|
       coach[game_team.head_coach][1] += 1
       if game_team.result == "WIN"
@@ -77,6 +76,7 @@ require 'pry'; binding.pry
         team_id_goals_shots[team_id][1] += game_team.shots
       end
     end
+
     return team_id_goals_shots
   end
 
