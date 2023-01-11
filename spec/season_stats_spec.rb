@@ -85,7 +85,6 @@ RSpec.describe SeasonStats do
     })
   end
 
-  # it "can determine "
 end
 
 end
