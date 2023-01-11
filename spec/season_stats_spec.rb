@@ -64,7 +64,6 @@ RSpec.describe SeasonStats do
   it "can determine the coach name as as key, and the value is an array with the first number being the victories and the second number being the total games coached" do 
 
     
-
     gameteam1 = double("1")
     gameteam2 = double("2")
     gameteam3 = double("3")
@@ -80,7 +79,6 @@ RSpec.describe SeasonStats do
 
     games_in_season = [gameteam1, gameteam2, gameteam3]
 
-    require 'pry'; binding.pry
     expect(season_stats.coach_victory_percentage_hash(games_in_season)).to eq({
       "Phil Jackson" => [1, 1], 
       "Doc Rivers" => [0, 2]

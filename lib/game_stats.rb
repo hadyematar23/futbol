@@ -14,6 +14,7 @@ class GameStats < Stats
 
   def highest_total_score
     sums_of_home_away_goals.sort.last
+   
   end
 
   def lowest_total_score
