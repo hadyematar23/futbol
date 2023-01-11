@@ -44,8 +44,6 @@ require 'pry'; binding.pry
     result = calculations.to_h.sort_by {|key, value| value}
   end
 
-  #######
-
   def most_accurate_team(season)
     hash_game_id_and_goals_shots = team_goals_shots_by_season(season)
     team_id_ratio = team_ratios_by_season(hash_game_id_and_goals_shots)
